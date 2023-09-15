@@ -1,5 +1,4 @@
 # Confluence PHP Client
-[![CI](https://github.com/CloudPlayDev/confluence-php-client/actions/workflows/ci.yml/badge.svg)](https://github.com/CloudPlayDev/confluence-php-client/actions/workflows/ci.yml) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/CloudPlayDev/confluence-php-client/badges/quality-score.png?b=main)](https://scrutinizer-ci.com/g/CloudPlayDev/confluence-php-client/?branch=main)
 
 A Confluence RESTful API client in PHP
 
@@ -11,8 +10,23 @@ An Object Oriented wrapper for Confluence
 
 ## Installation
 
+add to file composer.json:
+
 ```bash
-$ composer require cloudplaydev/confluence-php-client
+...
+"repositories": [
+  {
+    "type": "git",
+    "url": "https://github.com/maxlen/confluence-php-client.git"
+  }
+...
+```
+
+Run in console:
+
+```bash
+
+$ composer require maxlen/confluence-php-client
 ```
 
 ## Usage
@@ -21,7 +35,7 @@ $ composer require cloudplaydev/confluence-php-client
 
 #### Using Personal Access Tokens
 ```php
-use CloudPlayDev\ConfluenceClient\ConfluenceClient;
+use Maxlen\ConfluenceClient\ConfluenceClient;
 
 $client = new ConfluenceClient('https://url-to-conluence');
 
@@ -35,7 +49,7 @@ $client = new ConfluenceClient('https://USERNAME:PASSWORD@url-to-conluence');
 ```
 or
 ```php
-use CloudPlayDev\ConfluenceClient\ConfluenceClient;
+use Maxlen\ConfluenceClient\ConfluenceClient;
 
 $client = new ConfluenceClient('https://url-to-conluence');
 $client->authenticateBasicAuth('USERNAME', 'PASSWORD');
@@ -45,7 +59,7 @@ $client->authenticateBasicAuth('USERNAME', 'PASSWORD');
 
 #### Find pages by title and space key
 ```php
-/* @var $client CloudPlayDev\ConfluenceClient\ConfluenceClient */
+/* @var $client Maxlen\ConfluenceClient\ConfluenceClient */
 
 
 //Get the page we created
@@ -60,7 +74,7 @@ $createdPage = $searchResults->getResultAt(0);
 
 #### Fetch a page or comment by content id
 ```php
-/* @var $client CloudPlayDev\ConfluenceClient\ConfluenceClient */
+/* @var $client Maxlen\ConfluenceClient\ConfluenceClient */
 
 //Get a page or comment
 $resultContent = $client->content()->get(1234567890);
@@ -68,20 +82,20 @@ $resultContent = $client->content()->get(1234567890);
 
 #### Fetch page descendants
 ```php
-use CloudPlayDev\ConfluenceClient\Api\Content;
-/* @var $client CloudPlayDev\ConfluenceClient\ConfluenceClient */
-/* @var $page CloudPlayDev\ConfluenceClient\Entity\ContentPage */
+use Maxlen\ConfluenceClient\Api\Content;
+/* @var $client Maxlen\ConfluenceClient\ConfluenceClient */
+/* @var $page Maxlen\ConfluenceClient\Entity\ContentPage */
 
 //get child content
-$childContent = $client->content()->children($page, Content::CONTENT_TYPE_PAGE); //\CloudPlayDev\ConfluenceClient\Entity\ContentSearchResult
+$childContent = $client->content()->children($page, Content::CONTENT_TYPE_PAGE); //\Maxlen\ConfluenceClient\Entity\ContentSearchResult
 ```
 
 ### Manipulating  content
 
 #### Create new page
 ```php
-use CloudPlayDev\ConfluenceClient\Entity\ContentPage;
-/* @var $client CloudPlayDev\ConfluenceClient\ConfluenceClient */
+use Maxlen\ConfluenceClient\Entity\ContentPage;
+/* @var $client Maxlen\ConfluenceClient\ConfluenceClient */
 
 //Create a confluence content page
 $page = new ContentPage();
@@ -97,7 +111,7 @@ $client->content()->create($page);
 
 #### Create new comment
 ```php
-/* @var $client CloudPlayDev\ConfluenceClient\ConfluenceClient */
+/* @var $client Maxlen\ConfluenceClient\ConfluenceClient */
 
 //get a page by id
 $page = $client->content()->get(123456789);
@@ -111,7 +125,7 @@ $client->content()->create($comment);
 
 #### Create subpage
 ```php
-/* @var $client CloudPlayDev\ConfluenceClient\ConfluenceClient */
+/* @var $client Maxlen\ConfluenceClient\ConfluenceClient */
 
 //get a page by id
 $page = $client->content()->get(123456789);
@@ -125,7 +139,7 @@ $client->content()->create($subPage);
 
 #### Update content
 ```php
-/* @var $client CloudPlayDev\ConfluenceClient\ConfluenceClient */
+/* @var $client Maxlen\ConfluenceClient\ConfluenceClient */
 
 //get content by id
 $page = $client->content()->get(123456789);
@@ -140,7 +154,7 @@ $client->content()->update($page);
 
 #### Delete content
 ```php
-/* @var $client CloudPlayDev\ConfluenceClient\ConfluenceClient */
+/* @var $client Maxlen\ConfluenceClient\ConfluenceClient */
 
 //get content by id
 $page = $client->content()->get(123456789);
