@@ -19,7 +19,6 @@
     "psr/http-client-implementation": "^1.0",
     "psr/http-factory": "^1.0",
     "php-http/httplug": "^2.0",
-    "php-http/discovery": "^1.11",
     "php-http/promise": "^1.0",
     "php-http/client-common": "^2.2",
     "webmozart/assert": "^1.10",
@@ -28,11 +27,6 @@
   "require-dev": {
     "guzzlehttp/guzzle": "^7.2",
     "http-interop/http-factory-guzzle": "^1.0"
-  },
-  "config": {
-    "allow-plugins": {
-      "php-http/discovery": true
-    }
   },
   "autoload": {
     "psr-4": {
